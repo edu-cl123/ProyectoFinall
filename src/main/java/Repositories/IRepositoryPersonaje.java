@@ -23,12 +23,12 @@ public interface IRepositoryPersonaje {
     
     Personaje searchByCodigo(String codigo);
     
-    boolean addPersonaje(String codigo,String nombre,String vida,String ataque,String defensa);
+    boolean addPersonaje(String codigo,String nombre,int vida,int ataque,int defensa);
 
     boolean addPersonaje(Personaje c);
     
     
-    boolean createPersonaje(String codigo, String nombre,String vida,String ataque,String defensa);
+    boolean createPersonaje(String codigo, String nombre,int vida,int ataque,int defensa);
     boolean removePersonaje(String codigo); 
     boolean removeEnemigo(Personaje p);
     

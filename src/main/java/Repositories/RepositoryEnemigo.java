@@ -78,7 +78,7 @@ public class RepositoryEnemigo implements Comparator<Enemigo>, IRepositoryEnemig
     }
 
     @Override
-    public boolean addEnemigo(String codigo, String nombre, String vida, String ataque, String defensa) {
+    public boolean addEnemigo(String codigo, String nombre, int vida, int ataque, int defensa) {
         Enemigo e = new Enemigo(codigo, nombre, vida, ataque, defensa);
         return this.enemigos.add(e);
     }

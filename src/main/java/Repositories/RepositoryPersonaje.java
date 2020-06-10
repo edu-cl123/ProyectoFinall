@@ -32,13 +32,13 @@ public class RepositoryPersonaje implements IRepositoryPersonaje {
     }
 
     @Override
-    public boolean addPersonaje(String codigo, String nombre, String vida, String ataque, String defensa) {
+    public boolean addPersonaje(String codigo, String nombre, int vida, int ataque, int defensa) {
         Personaje p = new Personaje(codigo, nombre, vida, ataque, defensa);
         return this.Personajes.add(p);
     }
 
     @Override
-    public boolean createPersonaje(String codigo, String nombre, String vida, String ataque, String defensa) {
+    public boolean createPersonaje(String codigo, String nombre, int vida, int ataque, int defensa) {
         boolean result = false;
         if (codigo != null) {
             Personaje NuevoPersonaje = new Personaje(codigo, nombre, vida, ataque, defensa);

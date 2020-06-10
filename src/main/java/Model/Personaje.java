@@ -4,15 +4,15 @@ public class Personaje {
 
     private String codigo;
     private String nombre;
-    private String vida;
-    private String ataque;
-    private String defensa;
+    private int vida;
+    private int ataque;
+    private int defensa;
     
 
     public Personaje() {
     }
 
-    public Personaje(String codigo, String nombre,String vida, String ataque, String defensa) {
+    public Personaje(String codigo, String nombre,int vida, int ataque, int defensa) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ataque = ataque;
@@ -22,29 +22,28 @@ public class Personaje {
         
 
     
-    public String generarVida() {
+    public int generarVida() {
         int Calculo = (int) Math.floor(Math.random() * 100 + 1);
-        String vidaa = Integer.toString(Calculo);
-        return vidaa;
+  
+        return Calculo;
     }
 
-    public String generarAtaque() {
+    public int generarAtaque() {
         int Calculo = (int) Math.floor(Math.random() * 30 + 1);
-        String ataquee = Integer.toString(Calculo);
-        return ataquee;
+        return Calculo;
     }
 
-    public String generarDefensa() {
+    public int generarDefensa() {
         int Calculo = (int) Math.floor(Math.random() * 20 + 1);
-        String defensaa = Integer.toString(Calculo);
-        return defensaa;
+        
+        return Calculo;
     }
 
-    public String getVida() {
+    public int getVida() {
         return vida;
     }
 
-    public void setVida(String vida) {
+    public void setVida(int vida) {
         this.vida = vida;
     }
 
@@ -65,19 +64,19 @@ public class Personaje {
         this.nombre = nombre;
     }
 
-    public String getAtaque() {
+    public int getAtaque() {
         return ataque;
     }
 
-    public void setAtaque(String ataque) {
+    public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
 
-    public String getDefensa() {
+    public int getDefensa() {
         return defensa;
     }
 
-    public void setDefensa(String defensa) {
+    public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
 

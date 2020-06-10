@@ -4,14 +4,14 @@ public class Enemigo {
 
     private String codigo;
     private String nombre;
-    private String ataque;
-    private String defensa;
-    private String vida;
+    private int ataque;
+    private int defensa;
+    private int vida;
 
     public Enemigo() {
     }
 
-    public Enemigo(String codigo, String nombre, String ataque, String defensa, String vida) {
+    public Enemigo(String codigo, String nombre, int ataque, int defensa, int vida) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ataque = ataque;
@@ -34,29 +34,28 @@ public class Enemigo {
         this.defensa = generarDefensa();
     }
 
-    public String generarVida() {
+    public int generarVida() {
         int Calculo = (int) Math.floor(Math.random() * 100 + 1);
-        String vida = Integer.toString(Calculo);
-        return vida;
+        return Calculo;
     }
 
-    public String generarAtaque() {
+    public int generarAtaque() {
         int Calculo = (int) Math.floor(Math.random() * 30 + 1);
-        String ataque = Integer.toString(Calculo);
-        return ataque;
+
+        return Calculo;
     }
 
-    public String generarDefensa() {
+    public int generarDefensa() {
         int Calculo = (int) Math.floor(Math.random() * 20 + 1);
-        String defensa = Integer.toString(Calculo);
-        return defensa;
+   
+        return Calculo;
     }
 
-    public String getVida() {
+    public int getVida() {
         return vida;
     }
 
-    public void setVida(String vida) {
+    public void setVida(int vida) {
         this.vida = vida;
     }
 
@@ -76,19 +75,19 @@ public class Enemigo {
         this.nombre = nombre;
     }
 
-    public String getAtaque() {
+    public int getAtaque() {
         return ataque;
     }
 
-    public void setAtaque(String ataque) {
+    public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
 
-    public String getDefensa() {
+    public int getDefensa() {
         return defensa;
     }
 
-    public void setDefensa(String defensa) {
+    public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
 

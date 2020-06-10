@@ -89,7 +89,8 @@ boolean resultado = false;
                     Element eElement = (Element) nNode;
                     String codigo = eElement.getElementsByTagName("codigo").item(0).getTextContent();
                     String Nombre = eElement.getElementsByTagName("nombre").item(0).getTextContent();
-                    String vida = eElement.getElementsByTagName("vida").item(0).getTextContent();
+                    int vida = Integer.parseInt(eElement.getElementsByTagName("vida").item(0).getTextContent());
+                    int edad = Integer.parseInt(eElement.getElementsByTagName("Edad").item(0).getTextContent());
                     String ataque = eElement.getElementsByTagName("ataque").item(0).getTextContent();
                     String defensa = eElement.getElementsByTagName("defensa").item(0).getTextContent();
 

@@ -29,8 +29,7 @@ public class GUI {
     }
 
     public static void menu() {
-        logo();
-
+        logo(); 
         if (controller.loadAllDDBB()) {
             System.out.println("Base de datos cargada");
         } else {
@@ -55,22 +54,36 @@ public class GUI {
     static void opciones(int numero) {
         switch (numero) {
             case 0:
-                if (controller.saveAllDDBB()) {
+               /* if (controller.saveAllDDBB()) {
                     System.out.println("Base de datos guardada correctamente");
                 } else {
                     System.out.println("La base de datos no se ha guardado");
                 }
                 System.out.println("Te esperamos pronto");
+                */
                 break;
 
             case 1:
                 menu_Personaje();
                 break;
+                
             case 2:
                 menu_Enemigo();
                 break;
             case 3:
-
+                
+            int total_Personaje=personaje.getVida()+personaje.getDefensa()+personaje.getAtaque();
+            int total_Enemigo=enemigo.getVida()+enemigo.getDefensa()+enemigo.getAtaque(); 
+            
+            if(total_Personaje> total_Enemigo){
+                System.out.println("El Personaje "+personaje.getNombre()+" ha ganado el duelo");
+                enemigo=null;
+            }else if(total_Enemigo>total_Personaje) {
+                System.out.println("El Enemigo "+enemigo.getNombre()+" ha ganado el duelo");
+                personaje=null;
+            }else{
+                System.out.println("Empate, Toca mejorar.");
+            }
         }
     }
 
@@ -79,16 +92,21 @@ public class GUI {
         System.out.println("    Creacion de personaje    ");
 
         String codigo = devolverString("Introduce el codigo del personaje: ");
+        personaje.setCodigo(codigo);
         String nombre = devolverString("Introduce el nombre del personaje: ");
+        personaje.setNombre(nombre);
 
-        String vida = personaje.generarVida();
+        int vida = personaje.generarVida();
         System.out.println("Tu vida es :" + vida);
+        personaje.setVida(vida);
 
-        String ataque = personaje.generarAtaque();
+        int ataque = personaje.generarAtaque();
         System.out.println("Tu ataque es :" + ataque);
+        personaje.setAtaque(ataque);
 
-        String defensa = personaje.generarDefensa();
+        int defensa = personaje.generarDefensa();
         System.out.println("Tu defensa es :" + defensa);
+        personaje.setDefensa(defensa);
 
         controller.personaje.createPersonaje(codigo, nombre, vida, ataque, defensa);
         controller.personaje.addPersonaje(codigo, nombre, vida, ataque, defensa);
@@ -98,19 +116,24 @@ public class GUI {
 
     static void crear_enemigo() {
 
-        System.out.println("    Creacion de personaje    ");
+        System.out.println("    Creacion de Enenemigo    ");
 
-        String codigo = devolverString("Introduce el codigo del personaje: ");
-        String nombre = devolverString("Introduce el nombre del personaje: ");
+        String codigo = devolverString("Introduce el codigo del Enemigo: ");
+        enemigo.setCodigo(codigo);
+        String nombre = devolverString("Introduce el nombre del Enemigo: ");
+        enemigo.setNombre(nombre);
 
-        String vida = enemigo.generarVida();
+        int vida = enemigo.generarVida();
         System.out.println("Tu vida es :" + vida);
+        enemigo.setVida(vida);
 
-        String ataque = enemigo.generarAtaque();
+        int ataque = enemigo.generarAtaque();
         System.out.println("Tu ataque es :" + ataque);
+        enemigo.setAtaque(ataque);
 
-        String defensa = enemigo.generarDefensa();
+        int defensa = enemigo.generarDefensa();
         System.out.println("Tu defensa es :" + defensa);
+        enemigo.setDefensa(defensa);
 
         controller.enemigo.addEnemigo(codigo, nombre, vida, ataque, defensa);
         System.out.println("Disfruta del Juego");
@@ -142,18 +165,19 @@ public class GUI {
             numero = teclado.nextInt();
             switch (numero) {
                 case 0:
-                    if (controller.saveAllDDBB()) {
+                   /* if (controller.saveAllDDBB()) {
                         System.out.println("Base de datos guardada correctamente");
                     } else {
                         System.out.println("La base de datos no se ha guardado");
                     }
+                    */
                     break;
 
                 case 1:
                     crear_enemigo();
                     break;
                 case 2:
-                    String codigo = devolverString("Introduce el codigo del personaje :");
+                    String codigo = devolverString("Introduce el codigo del Enemigo :");
                     Enemigo EnemigoBorrar = controller.enemigo.searchByCodigo(codigo);
                     if (controller.personaje.removePersonaje(EnemigoBorrar.getCodigo())) {
                         System.out.println("Personaje Eliminado");
@@ -191,11 +215,12 @@ public class GUI {
             numero = teclado.nextInt();
             switch (numero) {
                 case 0:
-                    if (controller.savePersonajeDDBB()) {
+                  /*  if (controller.savePersonajeDDBB()) {
                         System.out.println("Personajes guardados correctamente");
                     } else {
                         System.out.println("No se ha podido guardar los personajes");
                     }
+*/
                     break;
 
                 case 1:
@@ -252,18 +277,18 @@ public class GUI {
                     System.out.println("Tu nuevo nombre es: " + nombre);
                     break;
                 case 2:
-                    String vida = personaje.generarVida();
+                    int vida = personaje.generarVida();
                     personaje.setVida(vida);
                     System.out.println("Tu vida a cambiado a : " + vida);
                     break;
 
                 case 3:
-                    String ataque = personaje.generarAtaque();
+                    int ataque = personaje.generarAtaque();
                     personaje.setAtaque(ataque);
                     System.out.println("Tu ataque se ha modificado a: " + ataque);
                     break;
                 case 4:
-                    String defensa = personaje.getDefensa();
+                    int defensa = personaje.getDefensa();
                     personaje.setDefensa(defensa);
                     System.out.println("Tu defensa se ha modificado a: " + defensa);
 

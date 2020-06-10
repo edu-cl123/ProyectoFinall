@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ListaPersonajes/>
+<ListaPersonajes>
+    <Personaje>
+        <Codigo>Eduardo</Codigo>
+        <Nombre>Eduardo</Nombre>
+        <Vida>9</Vida>
+        <Ataque>2713</Ataque>
+        <Defensa/>
+    </Personaje>
+</ListaPersonajes>
