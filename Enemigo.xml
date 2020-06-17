@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ListaEnemigos/>
+<ListaEnemigos>
+    <Personaje>
+        <Codigo>manu</Codigo>
+        <Nombre>manu</Nombre>
+        <Vida/>
+        <Ataque/>
+        <Defensa/>
+    </Personaje>
+</ListaEnemigos>

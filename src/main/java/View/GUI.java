@@ -29,12 +29,13 @@ public class GUI {
     }
 
     public static void menu() {
-        logo(); 
+        logo();
         if (controller.loadAllDDBB()) {
             System.out.println("Base de datos cargada");
         } else {
             System.out.println("Error en la base de datos");
         }
+
         int numero;
 
         do {
@@ -54,36 +55,66 @@ public class GUI {
     static void opciones(int numero) {
         switch (numero) {
             case 0:
-               /* if (controller.saveAllDDBB()) {
+                if (controller.saveAllDDBB()) {
                     System.out.println("Base de datos guardada correctamente");
                 } else {
                     System.out.println("La base de datos no se ha guardado");
                 }
                 System.out.println("Te esperamos pronto");
-                */
+
                 break;
 
             case 1:
                 menu_Personaje();
                 break;
-                
+
             case 2:
                 menu_Enemigo();
                 break;
             case 3:
                 
-            int total_Personaje=personaje.getVida()+personaje.getDefensa()+personaje.getAtaque();
-            int total_Enemigo=enemigo.getVida()+enemigo.getDefensa()+enemigo.getAtaque(); 
+                
+                
+                
+                
+                
+            System.out.println("\n+----------------------------+" );    
+            System.out.println("|    Personaje:"+personaje.getNombre()+ "          |"  );
+            System.out.println("+----------------------------+" );
+            System.out.println("| Vida: "+personaje.getVida()+"                    |");
+            System.out.println("| Ataque: "+personaje.getAtaque()+"                  |");
+            System.out.println("| Defensa: "+personaje.getDefensa()+"                 |");          
+            System.out.println("+----------------------------+"  );
+             System.out.println("");
+             System.out.println("_    __ ");   
+             System.out.println("| |  / /____");
+             System.out.println("| | / / ___/");
+             System.out.println("| |/ (__  )"); 
+             System.out.println("|___/____/");
+            System.out.println("");    
+            System.out.println("\n+----------------------------+" );    
+            System.out.println("|    Personaje:"+enemigo.getNombre()+ "          |"  );
+            System.out.println("+----------------------------+" );
+            System.out.println("| Vida: "+enemigo.getVida()+"                    |");
+            System.out.println("| Ataque: "+enemigo.getAtaque()+"                  |");
+            System.out.println("| Defensa: "+enemigo.getDefensa()+"                 |");          
+            System.out.println("+----------------------------+"  );
+
+            pulsarEnter();
+                System.out.println("");
             
-            if(total_Personaje> total_Enemigo){
-                System.out.println("El Personaje "+personaje.getNombre()+" ha ganado el duelo");
-                enemigo=null;
-            }else if(total_Enemigo>total_Personaje) {
-                System.out.println("El Enemigo "+enemigo.getNombre()+" ha ganado el duelo");
-                personaje=null;
-            }else{
-                System.out.println("Empate, Toca mejorar.");
-            }
+                int total_Personaje = personaje.getVida() + personaje.getDefensa() + personaje.getAtaque();
+                int total_Enemigo = enemigo.getVida() + enemigo.getDefensa() + enemigo.getAtaque();
+
+                if (total_Personaje > total_Enemigo) {
+                    System.out.println("El Personaje " + personaje.getNombre() + " ha ganado el duelo");
+                    enemigo = null;
+                } else if (total_Enemigo > total_Personaje) {
+                    System.out.println("El Enemigo " + enemigo.getNombre() + " ha ganado el duelo");
+                    personaje = null;
+                } else {
+                    System.out.println("Empate, Toca mejorar.");
+                }
         }
     }
 
@@ -91,7 +122,7 @@ public class GUI {
 
         System.out.println("    Creacion de personaje    ");
 
-        String codigo = devolverString("Introduce el codigo del personaje: ");
+        int codigo = devolverInt("Introduce el codigo del personaje: ");
         personaje.setCodigo(codigo);
         String nombre = devolverString("Introduce el nombre del personaje: ");
         personaje.setNombre(nombre);
@@ -108,8 +139,11 @@ public class GUI {
         System.out.println("Tu defensa es :" + defensa);
         personaje.setDefensa(defensa);
 
+        
+
         controller.personaje.createPersonaje(codigo, nombre, vida, ataque, defensa);
         controller.personaje.addPersonaje(codigo, nombre, vida, ataque, defensa);
+       
         System.out.println("Disfruta del Juego");
 
     }
@@ -118,7 +152,7 @@ public class GUI {
 
         System.out.println("    Creacion de Enenemigo    ");
 
-        String codigo = devolverString("Introduce el codigo del Enemigo: ");
+        int codigo = devolverInt("Introduce el codigo del Enemigo: ");
         enemigo.setCodigo(codigo);
         String nombre = devolverString("Introduce el nombre del Enemigo: ");
         enemigo.setNombre(nombre);
@@ -150,6 +184,16 @@ public class GUI {
         return resultado;
     }
 
+    public static int devolverInt(String texto) {
+        int resultado;
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print(texto);
+        resultado = teclado.nextInt();
+
+        return resultado;
+    }
+
     public static void menu_Enemigo() {
         int numero;
 
@@ -165,21 +209,21 @@ public class GUI {
             numero = teclado.nextInt();
             switch (numero) {
                 case 0:
-                   /* if (controller.saveAllDDBB()) {
+                    if (controller.saveAllDDBB()) {
                         System.out.println("Base de datos guardada correctamente");
                     } else {
                         System.out.println("La base de datos no se ha guardado");
                     }
-                    */
+
                     break;
 
                 case 1:
                     crear_enemigo();
                     break;
                 case 2:
-                    String codigo = devolverString("Introduce el codigo del Enemigo :");
-                    Enemigo EnemigoBorrar = controller.enemigo.searchByCodigo(codigo);
-                    if (controller.personaje.removePersonaje(EnemigoBorrar.getCodigo())) {
+                    String Nombre = devolverString("Introduce el Nombre del Enemigo :");
+                    Enemigo EnemigoBorrar = controller.enemigo.searchByName(Nombre);
+                    if (controller.personaje.removeEnemigo(EnemigoBorrar.getNombre())) {
                         System.out.println("Personaje Eliminado");
                     } else {
                         System.out.println("Error al eliminar el personaje");
@@ -201,7 +245,6 @@ public class GUI {
         int numero;
         String codigo;
         String nombre;
-                
 
         do {
             System.out.println("        Menu Personaje      ");
@@ -215,21 +258,21 @@ public class GUI {
             numero = teclado.nextInt();
             switch (numero) {
                 case 0:
-                  /*  if (controller.savePersonajeDDBB()) {
+                      if (controller.savePersonajeDDBB()) {
                         System.out.println("Personajes guardados correctamente");
                     } else {
                         System.out.println("No se ha podido guardar los personajes");
                     }
-*/
+                     
                     break;
 
                 case 1:
                     crear_personaje();
                     break;
                 case 2:
-                    codigo = devolverString("Introduce el codigo del personaje :");
-                    Personaje PersonajeBorrar = controller.personaje.searchByCodigo(codigo);
-                    if (controller.personaje.removePersonaje(PersonajeBorrar.getCodigo())) {
+                    nombre = devolverString("Introduce el nombre del personaje :");
+                    Personaje PersonajeBorrar = controller.personaje.searchByName(nombre);
+                    if (controller.personaje.removeEnemigo(PersonajeBorrar.getNombre())) {
                         System.out.println("Personaje Eliminado");
                     } else {
                         System.out.println("Error al eliminar el personaje");
@@ -295,6 +338,12 @@ public class GUI {
             }
         } while (numero != 0);
         return personaje;
+    }
+    
+        public static void pulsarEnter() {
+        System.out.print("\nPulsa Enter para continuar...");
+        Scanner teclado = new Scanner(System.in);
+        teclado.nextLine();
     }
 
 }

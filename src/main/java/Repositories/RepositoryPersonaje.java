@@ -32,33 +32,32 @@ public class RepositoryPersonaje implements IRepositoryPersonaje {
     }
 
     @Override
-    public boolean addPersonaje(String codigo, String nombre, int vida, int ataque, int defensa) {
+    public boolean addPersonaje(int codigo, String nombre, int vida, int ataque, int defensa) {
         Personaje p = new Personaje(codigo, nombre, vida, ataque, defensa);
         return this.Personajes.add(p);
     }
 
     @Override
-    public boolean createPersonaje(String codigo, String nombre, int vida, int ataque, int defensa) {
+    public boolean createPersonaje(int codigo, String nombre, int vida, int ataque, int defensa) {
         boolean result = false;
-        if (codigo != null) {
+        if (nombre != null) {
             Personaje NuevoPersonaje = new Personaje(codigo, nombre, vida, ataque, defensa);
             result = true;
         }
         return result;
     }
 
-    @Override
-    public boolean removePersonaje(String codigo) {
+   @Override
+    public boolean removeEnemigo(String nombre) {
         boolean result = false;
         for (int i = 0; i < Personajes.size(); i++) {
-            if (Personajes.get(i).getCodigo().equals(codigo)) {
+            if (Personajes.get(i).getNombre().equals(nombre)) {
                 Personajes.remove(i--);
                 result = true;
             }
         }
         return result;
     }
-
     public boolean removeEnemigo(Personaje p) {
         return this.Personajes.contains(p);
     }
@@ -89,10 +88,10 @@ public class RepositoryPersonaje implements IRepositoryPersonaje {
     }
 
     @Override
-    public Set<Personaje> listAllByName(String codigo) {
+    public Set<Personaje> listAllByName(String name) {
         Set<Personaje> newList = new TreeSet<>();
         for (int i = 0; i < Personajes.size(); i++) {
-            if (Personajes.get(i).getCodigo().contains(codigo)) {
+            if (Personajes.get(i).getNombre().contains(name)) {
                 newList.add(Personajes.get(i));
             }
         }
@@ -100,11 +99,11 @@ public class RepositoryPersonaje implements IRepositoryPersonaje {
     }
 
     @Override
-    public Personaje searchByCodigo(String codigo) {
+    public Personaje searchByName(String name) {
         Personaje result = null;
         boolean aux = false;
         for (int i = 0; i < Personajes.size() && !aux; i++) {
-            if (Personajes.get(i).getCodigo().equals(codigo)) {
+            if (Personajes.get(i).getNombre().equals(name)) {
                 result = Personajes.get(i);
                 aux = true;
             }
@@ -116,12 +115,14 @@ public class RepositoryPersonaje implements IRepositoryPersonaje {
         Personaje result = null;
         boolean valid = false;
         for (int i = 0; i < Personajes.size() && !valid; i++) {
-            if (Personajes.get(i).getCodigo().equals(nombre)) {
+            if (Personajes.get(i).getNombre().equals(nombre)) {
                 result = Personajes.get(i);
                 valid = true;
             }
         }
         return result;
     }
+
+
 
 }

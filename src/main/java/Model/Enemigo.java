@@ -2,16 +2,16 @@ package Model;
 
 public class Enemigo {
 
-    private String codigo;
-    private String nombre;
-    private int ataque;
-    private int defensa;
-    private int vida;
+    int codigo;
+    String nombre;
+    int ataque;
+    int defensa;
+    int vida;
 
     public Enemigo() {
     }
 
-    public Enemigo(String codigo, String nombre, int ataque, int defensa, int vida) {
+    public Enemigo(int codigo, String nombre, int ataque, int defensa, int vida) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ataque = ataque;
@@ -19,7 +19,7 @@ public class Enemigo {
         this.vida = vida;
     }
 
-    public Enemigo(String codigo, String nombre) {
+    public Enemigo(int codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.vida = generarVida();
@@ -59,11 +59,11 @@ public class Enemigo {
         this.vida = vida;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

@@ -2,25 +2,22 @@ package Model;
 
 public class Personaje {
 
-    private String codigo;
-    private String nombre;
-    private int vida;
-    private int ataque;
-    private int defensa;
+    int codigo;
+    String nombre;
+    int vida;
+    int ataque;
+    int defensa;
     
-
     public Personaje() {
     }
 
-    public Personaje(String codigo, String nombre,int vida, int ataque, int defensa) {
+    public Personaje(int codigo, String nombre,int vida, int ataque, int defensa) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ataque = ataque;
         this.defensa = defensa;
         this.vida = vida;
-    }
-        
-
+    }        
     
     public int generarVida() {
         int Calculo = (int) Math.floor(Math.random() * 100 + 1);
@@ -48,11 +45,11 @@ public class Personaje {
     }
 
     
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

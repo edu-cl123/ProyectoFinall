@@ -36,9 +36,9 @@ public class RepositoryEnemigo implements Comparator<Enemigo>, IRepositoryEnemig
     }
 
     @Override
-    public boolean createEnemigo(String codigo, String nombre) {
+    public boolean createEnemigo(int codigo, String nombre) {
         boolean result = false;
-        if (codigo != null) {
+        if (nombre != null) {
             Enemigo NuevoPersonaje = new Enemigo(codigo, nombre);
             result = true;
         }
@@ -46,10 +46,10 @@ public class RepositoryEnemigo implements Comparator<Enemigo>, IRepositoryEnemig
     }
 
     @Override
-    public boolean removeEnemigo(String codigo) {
+    public boolean removeEnemigo(String nombre) {
         boolean result = false;
         for (int i = 0; i < enemigos.size(); i++) {
-            if (enemigos.get(i).getCodigo().equals(codigo)) {
+            if (enemigos.get(i).getNombre().equals(nombre)) {
                 enemigos.remove(i--);
                 result = true;
             }
@@ -78,7 +78,7 @@ public class RepositoryEnemigo implements Comparator<Enemigo>, IRepositoryEnemig
     }
 
     @Override
-    public boolean addEnemigo(String codigo, String nombre, int vida, int ataque, int defensa) {
+    public boolean addEnemigo(int codigo, String nombre, int vida, int ataque, int defensa) {
         Enemigo e = new Enemigo(codigo, nombre, vida, ataque, defensa);
         return this.enemigos.add(e);
     }
@@ -97,16 +97,18 @@ public class RepositoryEnemigo implements Comparator<Enemigo>, IRepositoryEnemig
     }
     
     @Override
-    public Enemigo searchByCodigo(String codigo) {
+    public Enemigo searchByName(String nombre) {
         Enemigo result = null;
         boolean aux = false;
         for (int i = 0; i < enemigos.size() && !aux; i++) {
-            if (enemigos.get(i).getCodigo().equals(codigo)) {
+            if (enemigos.get(i).getNombre().equals(nombre)) {
                 result = enemigos.get(i);
                 aux = true;
             }
         }
         return result;
     }
+
+
 
 }

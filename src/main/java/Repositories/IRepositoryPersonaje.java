@@ -18,18 +18,18 @@ public interface IRepositoryPersonaje {
     
     Set<Personaje> listAllPersonaje();
     Set<Personaje> listAllPersonaje(Comparator c);
-    Set<Personaje> listAllByName(String codigo);
+    Set<Personaje> listAllByName(String nombre);
     Set<Personaje> listAllPersonajeTrue();
+    boolean removeEnemigo(String nombre);
+    Personaje searchByName(String nombre);
     
-    Personaje searchByCodigo(String codigo);
-    
-    boolean addPersonaje(String codigo,String nombre,int vida,int ataque,int defensa);
+    boolean addPersonaje(int codigo,String nombre,int vida,int ataque,int defensa);
 
     boolean addPersonaje(Personaje c);
     
     
-    boolean createPersonaje(String codigo, String nombre,int vida,int ataque,int defensa);
-    boolean removePersonaje(String codigo); 
+    boolean createPersonaje(int codigo, String nombre,int vida,int ataque,int defensa);
+  
     boolean removeEnemigo(Personaje p);
     
 }

@@ -19,14 +19,14 @@ public interface IRepositoryEnemigo {
 
     Set<Enemigo> listAllEnemigo(Comparator c);
 
-    boolean addEnemigo(String codigo,String nombre,int vida,int ataque,int defensa);
+    boolean addEnemigo(int codigo,String nombre,int vida,int ataque,int defensa);
 
     boolean addEnemigo(Enemigo c);
 
-    boolean createEnemigo(String codigo, String nombre);
+    boolean createEnemigo(int codigo, String nombre);
 
-    boolean removeEnemigo(String codigo);
+    boolean removeEnemigo(String nombre);
     
-    Enemigo searchByCodigo(String codigo);
+    Enemigo searchByName(String nombre);
 
 }

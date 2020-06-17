@@ -10,9 +10,9 @@ package Controller;
  * @author educa
  */
 public interface IAppController {
-    public final static String PersonajeDDBB="personaje.xml";
-    public final static String EnemigoDDBB="Enemigo.xml";
-    
+
+   
+  
     boolean loadPersonajeDDBB();
     boolean loadEnemigoDDBB();
     boolean loadAllDDBB();
